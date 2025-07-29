@@ -1,0 +1,34 @@
+# Log directory
+log_dir: ./logs/refuse/
+
+# Dataset
+subdatasets: ["CoCoNot", "SGXSTest", "XSTest", "ORBench"]
+
+# Keywords:
+keywords: ["prompts", "responses"]
+
+# Judge LLM
+judge_llm:
+  provider: openai # or vllm
+
+  model_kwargs:
+    model: gpt-4.1-nano
+
+  sampling_params:
+    temperature: 0.6
+    top_p: 0.9
+    max_tokens: 16
+
+
+  # provider: vllm
+
+  # model_kwargs:
+  #   model: Qwen/Qwen2.5-14B-Instruct
+  #   trust_remote_code: True
+  #   max_model_len: 4352
+  #   gpu_memory_utilization: 0.9
+
+  # sampling_params:
+  #   temperature: 0.6
+  #   top_p: 0.9
+  #   max_tokens: 16

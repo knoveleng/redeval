@@ -1,0 +1,1 @@
+from .refuse import RefuseConfig

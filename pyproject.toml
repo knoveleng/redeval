@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "redeval"
+version = "0.1.0"
+description = "RedBench: A Universal Dataset for Comprehensive Red Teaming of Large Language Models"
+readme = "README.md"
+authors = [
+    {name = "Knovel Engineering Lab", email = "andrew.dang@knoveleng.com"}
+]
+license = {text = "MIT"}
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+keywords = ["llm", "language-model", "evaluation", "robustness", "ai-safety"]
+dependencies = [
+    "vllm==0.6.3.post1",
+    "openai>=1.0.0",
+    "nltk>=3.8.1",
+    "pydantic>=2.0.0",
+    "PyYAML>=6.0",
+    "datasets>=2.14.0",
+]
+
+[project.urls]
+"Bug Reports" = "https://github.com/knoveleng/redbench/issues"
+"Source" = "https://github.com/knoveleng/redbench"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+]
+
+[tool.setuptools]
+packages = {find = {exclude = ["tests", "*.tests", "*.tests.*", "tests.*"]}}
+include-package-data = true

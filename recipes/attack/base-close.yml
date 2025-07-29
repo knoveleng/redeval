@@ -1,0 +1,25 @@
+# Log directory
+log_dir: ./logs/attack/
+
+# Dataset
+dataset_id: "knoveleng/redbench"
+subdatasets: ["HarmBench"]
+
+# Methods
+methods: ["direct", "human_jailbreak", "zeroshot"]
+
+# Path to configs
+paths: ["", "./recipes/attack/human_jailbreak.yml", ""]
+
+# Target LLM Configuration
+target_llm:
+  provider: openai # or vllm
+
+  model_kwargs:
+    model: gpt-4o-mini
+
+  sampling_params:
+    temperature: 0.6
+    top_p: 0.9
+    max_tokens: 1024
+    

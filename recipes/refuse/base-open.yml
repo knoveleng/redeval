@@ -1,0 +1,27 @@
+# Base configuration
+dataset_id: knoveleng/redbench
+subdatasets: ["CoCoNot", "SGXSTest", "XSTest", "ORBench"]
+
+# Logs
+log_dir: ./logs/refuse/
+
+# Methods
+methods: ["base"]
+
+#Path to configs
+paths: [""] # Placeholder
+
+# Target LLM Configuration
+target_llm:
+  provider: vllm
+
+  model_kwargs:
+    model: Qwen/Qwen2.5-7B-Instruct
+    trust_remote_code: True
+    max_model_len: 4096 
+    gpu_memory_utilization: 0.8
+
+  sampling_params:
+    temperature: 0.6
+    top_p: 0.9
+    max_tokens: 1024

@@ -1,0 +1,24 @@
+# Base configuration
+dataset_id: knoveleng/redbench
+subdatasets: ["CoCoNot", "SGXSTest", "XSTest", "ORBench"]
+
+# Logs
+log_dir: ./logs/refuse/
+
+# Methods
+methods: ["base"]
+
+#Path to configs
+paths: [""] # Placeholder
+
+# Target LLM Configuration
+target_llm:
+  provider: openai # or vllm
+
+  model_kwargs:
+    model: gpt-4o-mini
+
+  sampling_params:
+    temperature: 0.6
+    top_p: 0.9
+    max_tokens: 1024

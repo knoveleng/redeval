@@ -15,9 +15,9 @@ with open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
 NAME = "redeval"
 VERSION = "0.1.0"
 DESCRIPTION = "Redbench: A Universal Dataset for Comprehensive Red Teaming of Large Language Models"
-AUTHOR = "Knovel Engineering Lab"
-AUTHOR_EMAIL = "andrew.dang@knoveleng.com"
-URL = "https://github.com/knoveleng/redbench"
+AUTHOR = "Anonymous"
+AUTHOR_EMAIL = "anonymous@anonymous.com"
+URL = "https://github.com/anonymous/redbench"
 LICENSE = "MIT" 
 
 # Define package dependencies

@@ -1,5 +1,5 @@
 # Base configuration
-dataset_id: knoveleng/redbench
+dataset_id: anonymous/redbench
 subdatasets: ["CoCoNot", "SGXSTest", "XSTest", "ORBench"]
 
 # Logs

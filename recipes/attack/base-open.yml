@@ -2,7 +2,7 @@
 log_dir: ./logs/attack/
 
 # Dataset
-dataset_id: "knoveleng/redbench"
+dataset_id: "anonymous/redbench"
 subdatasets: ["HarmBench"]
 
 # Methods

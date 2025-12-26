@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "RedBench: A Universal Dataset for Comprehensive Red Teaming of Large Language Models"
 readme = "README.md"
 authors = [
-    {name = "Knovel Engineering Lab", email = "andrew.dang@knoveleng.com"}
+    {name = "Anonymous", email = "anonymous@anonymous.com"}
 ]
 license = {text = "MIT"}
 requires-python = ">=3.8"
@@ -33,8 +33,8 @@ dependencies = [
 ]
 
 [project.urls]
-"Bug Reports" = "https://github.com/knoveleng/redbench/issues"
-"Source" = "https://github.com/knoveleng/redbench"
+"Bug Reports" = "https://github.com/anonymous/redbench/issues"
+"Source" = "https://github.com/anonymous/redbench"
 
 [project.optional-dependencies]
 dev = [

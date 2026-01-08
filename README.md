@@ -2,9 +2,11 @@
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Security: Refactored](https://img.shields.io/badge/Security-Refactored-green.svg)](#security-features)
+[![Dataset on HF](https://huggingface.co/datasets/huggingface/badges/resolve/main/dataset-on-hf-sm.svg)](https://huggingface.co/datasets/knoveleng/redbench)
 
-A comprehensive framework for evaluating the safety of Large Language Models (LLMs) through systematic attack and refusal testing. RedEval provides a unified, secure, and extensible platform for assessing LLM robustness against adversarial prompts and harmful content. It is a part of the paper ["RedBench: A Universal Dataset for Comprehensive Red Teaming of Large Language Models"](), which is a universal dataset for comprehensive red teaming of LLMs.
+A comprehensive framework for evaluating the safety of Large Language Models (LLMs) through systematic attack and refusal testing. RedEval provides a unified, secure, and extensible platform for assessing LLM robustness against adversarial prompts and harmful content. It is a part of the paper ["RedBench: A Universal Dataset for Comprehensive Red Teaming of Large Language Models"](https://arxiv.org/abs/2601.03699), which is a universal dataset for comprehensive red teaming of LLMs.
+
+📦 **Dataset**: The RedBench dataset is publicly available on HuggingFace at [knoveleng/redbench](https://huggingface.co/datasets/knoveleng/redbench). It includes comprehensive red teaming prompts across multiple safety categories and domains.
 
 ## 🚀 Quick Start
 
@@ -424,6 +426,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you find this project useful, please consider citing it in your research:
 
 ```
-Coming soon ...
+@misc{dang2026redbenchuniversaldatasetcomprehensive,
+      title={RedBench: A Universal Dataset for Comprehensive Red Teaming of Large Language Models}, 
+      author={Quy-Anh Dang and Chris Ngo and Truong-Son Hy},
+      year={2026},
+      eprint={2601.03699},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2601.03699}, 
+}
 ```
 

@@ -6,7 +6,7 @@ Handles environment variables, credentials, and global settings.
 import os
 import logging
 from pathlib import Path
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List
 from dataclasses import dataclass, field
 
 
@@ -25,6 +25,14 @@ class EnvironmentConfig:
     
     # Logging
     log_level: str = "INFO"
+    
+    # Model configuration
+    open_source_models: List[str] = field(default_factory=list)
+    closed_source_models: List[str] = field(default_factory=list)
+    
+    # Evaluation parameters
+    num_samples: int = -1
+    seed: int = 0
     
     def __post_init__(self):
         """Load configuration from environment variables."""
@@ -46,6 +54,21 @@ class EnvironmentConfig:
             self.recipes_dir = self.project_root / "recipes"
             
         self.log_level = os.getenv("REDEVAL_LOG_LEVEL", "INFO")
+        
+        # Load model lists from environment
+        if open_models := os.getenv("REDEVAL_OPEN_SOURCE_MODELS"):
+            self.open_source_models = open_models.split()
+        else:
+            self.open_source_models = ["Qwen/Qwen2.5-7B-Instruct"]
+            
+        if closed_models := os.getenv("REDEVAL_CLOSED_SOURCE_MODELS"):
+            self.closed_source_models = closed_models.split()
+        else:
+            self.closed_source_models = ["gpt-4o-mini"]
+            
+        # Load evaluation parameters
+        self.num_samples = int(os.getenv("REDEVAL_NUM_SAMPLES", "-1"))
+        self.seed = int(os.getenv("REDEVAL_SEED", "0"))
         
         # Create directories if they don't exist
         self.log_dir.mkdir(parents=True, exist_ok=True)

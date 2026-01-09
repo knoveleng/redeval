@@ -16,18 +16,13 @@ NAME = "redeval"
 VERSION = "0.1.0"
 DESCRIPTION = "Redbench: A Universal Dataset for Comprehensive Red Teaming of Large Language Models"
 AUTHOR = "Knovel Engineering Lab"
-AUTHOR_EMAIL = "andrew.dang@knoveleng.com"
+AUTHOR_EMAIL = "quyanh.dang@knoveleng.com"
 URL = "https://github.com/knoveleng/redbench"
 LICENSE = "MIT" 
 
 # Define package dependencies
-REQUIRED_PACKAGES = [
-    "vllm",
-    "openai",
-    "pydantic",
-    "PyYAML",
-    "datasets",
-]
+with open("requirements.txt", "r", encoding="utf-8") as fh:
+    REQUIRED_PACKAGES = [line.strip() for line in fh if line.strip() and not line.startswith("#")]
 
 # Define development dependencies
 DEV_PACKAGES = [

@@ -14,7 +14,7 @@ A comprehensive framework for evaluating the safety of Large Language Models (LL
 
 ```bash
 # Clone the repository
-git clone git@github.com:knoveleng/redeval.git
+git clone https://github.com/knoveleng/redeval.git
 cd redeval
 
 # Install dependencies

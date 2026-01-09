@@ -39,20 +39,20 @@ Examples:
     pipeline_parser.add_argument(
         "--models", 
         nargs="+", 
-        default=["Qwen/Qwen2.5-7B-Instruct", "gpt-4o-mini"],
-        help="Models to evaluate"
+        default=None,  # Will be computed from open + closed source models
+        help="Models to evaluate (overrides open/closed source model lists)"
     )
     pipeline_parser.add_argument(
         "--open-source-models",
         nargs="+",
-        default=["Qwen/Qwen2.5-7B-Instruct"],
-        help="Open source models to evaluate"
+        default=None,  # Will use env_config values
+        help="Open source models to evaluate (default: from REDEVAL_OPEN_SOURCE_MODELS env var)"
     )
     pipeline_parser.add_argument(
         "--closed-source-models",
         nargs="+",
-        default=["gpt-4o-mini"],
-        help="Closed source models to evaluate"
+        default=None,  # Will use env_config values
+        help="Closed source models to evaluate (default: from REDEVAL_CLOSED_SOURCE_MODELS env var)"
     )
     pipeline_parser.add_argument(
         "--phases",
@@ -63,14 +63,14 @@ Examples:
     pipeline_parser.add_argument(
         "--num-samples",
         type=int,
-        default=-1,
-        help="Number of samples to process (-1 for all)"
+        default=None,  # Will use env_config.num_samples
+        help="Number of samples to process (default: from REDEVAL_NUM_SAMPLES env var, -1 for all)"
     )
     pipeline_parser.add_argument(
         "--seed",
         type=int,
-        default=0,
-        help="Random seed"
+        default=None,  # Will use env_config.seed
+        help="Random seed (default: from REDEVAL_SEED env var)"
     )
     
     # Individual component commands
@@ -142,14 +142,30 @@ def run_pipeline_command(args) -> int:
     if args.phases:
         phases = [PipelinePhase(phase) for phase in args.phases]
     
+    # Use env_config defaults if CLI args are not provided
+    open_source_models = args.open_source_models if args.open_source_models is not None else env_config.open_source_models
+    closed_source_models = args.closed_source_models if args.closed_source_models is not None else env_config.closed_source_models
+    num_samples = args.num_samples if args.num_samples is not None else env_config.num_samples
+    seed = args.seed if args.seed is not None else env_config.seed
+    
+    # If models is provided, use it; otherwise combine open + closed source models
+    if args.models is not None:
+        models = args.models
+    else:
+        models = open_source_models + closed_source_models
+    
+    logger.info(f"Open source models: {open_source_models}")
+    logger.info(f"Closed source models: {closed_source_models}")
+    logger.info(f"All models: {models}")
+    
     # Create pipeline configuration
     config = PipelineConfig(
-        models=args.models,
-        open_source_models=args.open_source_models,
-        closed_source_models=args.closed_source_models,
+        models=models,
+        open_source_models=open_source_models,
+        closed_source_models=closed_source_models,
         phases=phases,
-        num_samples=args.num_samples,
-        seed=args.seed
+        num_samples=num_samples,
+        seed=seed
     )
     
     # Run pipeline
@@ -251,4 +267,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

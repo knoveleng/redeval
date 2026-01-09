@@ -1,0 +1,5 @@
+vllm
+openai
+pydantic
+PyYAML
+datasets

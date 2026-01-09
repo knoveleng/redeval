@@ -66,9 +66,12 @@ def run(config):
         for method in methods:
             dir_path = Path(log_dir) / subdataset / method
 
-            # Get property file
-            log_files = [f for f in os.listdir(dir_path) if f.endswith(".json")]
-            latest_log_file = [f for f in log_files if main_name in f.lower()][0]
+            # Get the most recent log file (sorted by timestamp in filename)
+            log_files = [f for f in os.listdir(dir_path) if f.endswith(".json") and not os.path.isdir(dir_path / f)]
+            if not log_files:
+                print(f"No log files found in {dir_path}, skipping...")
+                continue
+            latest_log_file = sorted(log_files)[-1]  # Most recent by timestamp in filename
             
             # Load logs
             points = json.load(open(dir_path / latest_log_file))

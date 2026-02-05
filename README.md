@@ -40,6 +40,9 @@ HUGGINGFACE_TOKEN=your_huggingface_token_here
 # Set up environment
 source ./sh/setup_env.sh
 
+# Run with default models, you can edit .env to define models which you wanna run
+python -m redeval.cli run-pipeline
+
 # Run complete pipeline
 python -m redeval.cli run-pipeline --models "Qwen/Qwen2.5-7B-Instruct" "gpt-4o-mini"
 

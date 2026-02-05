@@ -23,7 +23,7 @@ class LLMviaOpenAI(BaseLLM):
         self.client = OpenAI(api_key=config.api_key, base_url=config.base_url)
 
     def get_name(self):
-        return self.model_kwargs["model"]
+        return self.model_kwargs["model"].split("/")[-1]
 
     def generate(self, query: str, sampling_params: dict):
         try:

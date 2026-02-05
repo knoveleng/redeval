@@ -204,7 +204,7 @@ class PipelineOrchestrator:
             config.target_llm.model_kwargs["model"] = model_name
             run(
                 config=config,
-                num_samples=10,
+                num_samples=self.config.num_samples,
                 shuffle=False,
                 seed=self.config.seed,
                 split=self.config.split,
@@ -219,7 +219,7 @@ class PipelineOrchestrator:
             config.target_llm.model_kwargs["model"] = model_name
             run(
                 config=config,
-                num_samples=10,
+                num_samples=self.config.num_samples,
                 shuffle=False,
                 seed=self.config.seed,
                 split=self.config.split,
@@ -241,7 +241,9 @@ class PipelineOrchestrator:
         for subdataset in self.config.refuse_datasets:
             for method_name in method_names:
                 for model_name in self.config.models:
-                    log_dir = base_log_dir / subdataset / method_name / model_name
+                    # Use basename for refuse paths (model names contain slashes)
+                    model_basename = model_name.split("/")[-1]
+                    log_dir = base_log_dir / subdataset / method_name / model_basename
                     
                     if log_dir.exists():
                         self.logger.info(f"Evaluating refuse: {subdataset}/{method_name}/{model_name}")
@@ -299,7 +301,9 @@ class PipelineOrchestrator:
         for subdataset in self.config.refuse_datasets:
             for method_name in method_names:
                 for model_name in self.config.models:
-                    log_dir = base_log_dir / subdataset / method_name / model_name
+                    # Use basename for refuse paths (model names contain slashes)
+                    model_basename = model_name.split("/")[-1]
+                    log_dir = base_log_dir / subdataset / method_name / model_basename
                     
                     if log_dir.exists():
                         self.logger.info(f"Scoring refuse: {subdataset}/{method_name}/{model_name}")

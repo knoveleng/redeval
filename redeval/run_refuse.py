@@ -46,8 +46,9 @@ def run(config, num_samples, shuffle, seed, split, field):
             )
             refuser.batch_generate(queries, config.target_llm.sampling_params)
 
-            # Log dir with subdataset name
-            log_dir = dir_path / config.target_llm.model_kwargs["model"]
+            # Log dir with subdataset name (use basename to avoid nested dirs from slash in model name)
+            model_basename = config.target_llm.model_kwargs["model"].split("/")[-1]
+            log_dir = dir_path / model_basename
             refuser.save(log_dir)
 
 

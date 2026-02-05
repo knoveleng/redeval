@@ -56,13 +56,16 @@ class EnvironmentConfig:
         self.log_level = os.getenv("REDEVAL_LOG_LEVEL", "INFO")
         
         # Load model lists from environment
-        if open_models := os.getenv("REDEVAL_OPEN_SOURCE_MODELS"):
-            self.open_source_models = open_models.split()
+        # Note: empty string "" should result in empty list, only use defaults if env var is unset
+        open_models = os.getenv("REDEVAL_OPEN_SOURCE_MODELS")
+        if open_models is not None:
+            self.open_source_models = open_models.split() if open_models else []
         else:
             self.open_source_models = ["Qwen/Qwen2.5-7B-Instruct"]
             
-        if closed_models := os.getenv("REDEVAL_CLOSED_SOURCE_MODELS"):
-            self.closed_source_models = closed_models.split()
+        closed_models = os.getenv("REDEVAL_CLOSED_SOURCE_MODELS")
+        if closed_models is not None:
+            self.closed_source_models = closed_models.split() if closed_models else []
         else:
             self.closed_source_models = ["gpt-4o-mini"]
             

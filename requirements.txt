@@ -1,4 +1,4 @@
-vllm
+vllm==0.11.0
 openai
 pydantic
 PyYAML

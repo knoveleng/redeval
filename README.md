@@ -43,7 +43,7 @@ source ./sh/setup_env.sh
 # Run with default models, you can edit .env to define models which you wanna run
 python -m redeval.cli run-pipeline
 
-# Run complete pipeline
+# Run complete pipeline with specific models
 python -m redeval.cli run-pipeline --models "Qwen/Qwen2.5-7B-Instruct" "gpt-4o-mini"
 
 # Or run individual phases

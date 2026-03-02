@@ -429,14 +429,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you find this project useful, please consider citing it in your research:
 
 ```
-@misc{dang2026redbenchuniversaldatasetcomprehensive,
-      title={RedBench: A Universal Dataset for Comprehensive Red Teaming of Large Language Models}, 
-      author={Quy-Anh Dang and Chris Ngo and Truong-Son Hy},
-      year={2026},
-      eprint={2601.03699},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2601.03699}, 
+@inproceedings{
+   dang2026redbench,
+   title={RedBench: A Universal Dataset for Comprehensive Red Teaming of Large Language Models},
+   author={Quy-Anh Dang and Chris Ngo and Truong-Son Hy},
+   booktitle={ICLR 2026 Workshop on Principled Design for Trustworthy AI - Interpretability, Robustness, and Safety across Modalities},
+   year={2026},
+   url={https://openreview.net/forum?id=7pZXyk0d07}
 }
 ```
 
